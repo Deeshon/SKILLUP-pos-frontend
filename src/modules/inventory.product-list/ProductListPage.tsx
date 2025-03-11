@@ -1,9 +1,11 @@
 import Header from "./components/Header"
+import ProductListTable from "./components/ProductListTable"
 
 const ProductListPage = () => {
   return (
-    <div className="p-3">
+    <div className="py-2 md:p-2">
         <Header />
+        <ProductListTable />
     </div>
   )
 }

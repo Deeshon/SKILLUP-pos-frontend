@@ -1,3 +1,5 @@
+import React from "react";
+
 export type TypeHeaderProps = {
   isMenuClose: boolean;
   setIsMenuClose: React.Dispatch<React.SetStateAction<boolean>>;
@@ -62,4 +64,36 @@ export type TypeProductTableProps = {
   productList: TypeProduct[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   columns?: any;
+};
+
+type TableColumn = {
+  title: string;
+  dataIndex: string;
+  key: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  render?: (_: any) => React.ReactNode;
+};
+
+export type TypeResponsiveTableProps = {
+  columns: TableColumn[];
+  mobileWidth: string;
+};
+
+type TypeFilterItem = {
+  title: string;
+  key: string;
+  options: string[];
+  type: string;
+};
+
+type TypeSearchItem = {
+  title: string;
+  key: string;
+};
+
+export type TypeFilterProps = TypeFilterItem[];
+
+export type TypeSearchFilterProps = {
+  filterProps: TypeFilterProps;
+  searchProps: TypeSearchItem[];
 };

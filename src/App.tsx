@@ -55,6 +55,11 @@ function App() {
               headerBg: '#141332',
               headerColor: '#8294d3',
               borderColor: '#353570'
+            },
+            Modal: {
+              contentBg: '#1d1d41',
+              headerBg: "#1d1d41",
+              titleColor: 'white'
             }
           },
           token: {

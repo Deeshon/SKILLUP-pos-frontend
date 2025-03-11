@@ -2,13 +2,11 @@ import { FaHand } from "react-icons/fa6";
 import { IoMdRefresh } from "react-icons/io";
 import { FaAngleUp } from "react-icons/fa";
 import SalesStatComponent from "./components/SalesStatComponent";
-import useProductList from "../../common/hooks/useProductList";
 import BestSellerComponent from "./components/BestSellerComponent";
 import useProductTable from "./hooks/useProductTable";
 import RecentTransactionsComponent from "./components/RecentTransactionsComponent";
 
 const SalesDashboardPage = () => {
-  const { bestSellerList, isLoading } = useProductList();
   const { columns, recentColumns } = useProductTable();
   return (
     <div className="grid gap-6">
@@ -43,13 +41,13 @@ const SalesDashboardPage = () => {
       <SalesStatComponent />
       <div className="grid gap-6 md:grid-cols-3">
         <BestSellerComponent
-          isLoading={isLoading}
-          productList={bestSellerList ?? []}
+          isLoading={false}
+          productList={[]}
           columns={columns}
         />
         <RecentTransactionsComponent
-          isLoading={isLoading}
-          productList={bestSellerList ?? []}
+          isLoading={false}
+          productList={[]}
           columns={recentColumns}
         />
       </div>

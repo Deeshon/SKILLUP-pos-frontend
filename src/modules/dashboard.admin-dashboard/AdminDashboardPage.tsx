@@ -1,4 +1,3 @@
-import useProductList from "../../common/hooks/useProductList"
 import { infostats } from "./__data__/infoStats"
 import { salesStats } from "./__data__/salesStats"
 import ExpiredProductsComponent from "./components/ExpiredProductsComponent"
@@ -9,7 +8,6 @@ import SaleStatComponent from "./components/SaleStatComponent"
 import useProductTable from "./hooks/useProductTable"
 
 const AdminDashboardPage = () => {
-  const { isLoading, productList, expiredProductList } = useProductList();
   const { columns, expiredColumns  } = useProductTable();
   return (
     <div className="mt-1 md:mx-3 grid gap-6">
@@ -21,9 +19,9 @@ const AdminDashboardPage = () => {
         </div>
         <div className="grid gap-6 md:flex">
             <PurchaseAndSalesComponent />
-            <ProductListComponent isLoading={isLoading} productList={productList ?? []} columns={columns}  />
+            <ProductListComponent isLoading={false} productList={[]} columns={columns}  />
         </div>
-        <ExpiredProductsComponent isLoading={isLoading} productList={expiredProductList ?? []} columns={expiredColumns} />
+        <ExpiredProductsComponent isLoading={false} productList={[]} columns={expiredColumns} />
     </div>
   )
 }
