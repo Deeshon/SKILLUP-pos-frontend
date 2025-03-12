@@ -1,12 +1,16 @@
-import ResponsiveTable from "../../../common/components/ResponsiveTable";
-import SearchFilterComponent from "../../../common/components/SearchFilterComponent";
-import useProductTable from "../hooks/useProductTable";
+import ListTable from "../../common/components/ListTable";
+import ListTableHeader from "../../common/components/ListTableHeader";
+import useTable from "./hooks/useTable";
 
-const ProductListTable = () => {
-  const { columns } = useProductTable();
+const ExpiredProductListPage = () => {
+    const {columns} = useTable();
   return (
-    <div className="mt-10 p-4 bg-navy-200 grid gap-4 rounded-lg border-1 border-navy-300">
-      <SearchFilterComponent
+    <div className="py-2 md:p-2">
+      <ListTableHeader
+        title="Expired Products"
+        subtitle="Manage your expired products"
+      />
+      <ListTable
         filterProps={[
           {
             title: "Category",
@@ -43,10 +47,11 @@ const ProductListTable = () => {
             key: "productName",
           },
         ]}
+        mobileWidth="305px"
+        columns={columns}
       />
-      <ResponsiveTable columns={columns} mobileWidth={"305px"} />
     </div>
   );
 };
 
-export default ProductListTable;
+export default ExpiredProductListPage;

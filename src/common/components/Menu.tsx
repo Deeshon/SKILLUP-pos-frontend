@@ -1,4 +1,4 @@
-import { JSX, useState } from "react";
+import { JSX, useEffect, useState } from "react";
 import { TypeMenuProps } from "../types";
 import { RiDashboardFill, RiArrowDropRightLine } from "react-icons/ri";
 import { HiOutlineDeviceMobile } from "react-icons/hi";
@@ -9,6 +9,7 @@ import {
   MdCategory,
   MdOutlineQrCode2,
 } from "react-icons/md";
+import { useLocation } from "react-router-dom";
 
 const menu: {
   title: string;
@@ -46,13 +47,13 @@ const menu: {
         menuIcon: <MdProductionQuantityLimits size={17} />,
         href: "/inventory/product-list"
       },
-      { title: "Create Products", menuIcon: <FaBoxOpen size={17} /> },
-      { title: "Expired Products", menuIcon: <GiWrappedSweet size={17} /> },
-      { title: "Low Stocks", menuIcon: <FaCubes size={17} /> },
-      { title: "Category", menuIcon: <MdCategory size={17} /> },
-      { title: "Sub Category", menuIcon: <MdCategory size={17} /> },
-      { title: "Brands", menuIcon: <FaTags size={17} /> },
-      { title: "Units", menuIcon: <FaCubes size={17} /> },
+      { title: "Create Products", menuIcon: <FaBoxOpen size={17} />},
+      { title: "Expired Products", menuIcon: <GiWrappedSweet size={17} />, href: "/inventory/expired-products" },
+      { title: "Low Stocks", menuIcon: <FaCubes size={17} />, href: "/inventory/low-stocks"  },
+      { title: "Category", menuIcon: <MdCategory size={17} />, href: "/inventory/category-list"   },
+      { title: "Sub Category", menuIcon: <MdCategory size={17} />,  },
+      { title: "Brands", menuIcon: <FaTags size={17} />, href: "/inventory/brand-list" },
+      { title: "Units", menuIcon: <FaCubes size={17} />, href: "/inventory/unit-list" },
       { title: "Warranties", menuIcon: <GiWrappedSweet size={17} /> },
       { title: "Print Barcode", menuIcon: <FaBarcode size={17} /> },
       { title: "Print QR", menuIcon: <MdOutlineQrCode2 size={17} /> },
@@ -66,6 +67,18 @@ const Menu = ({ isMenuClose }: TypeMenuProps) => {
   const handleDropdownClick = (title: string) => {
     setOpenDropdown((prev) => (prev === title ? null : title));
   };
+
+  const location = useLocation();
+  const [pathname, setPathname] = useState(location.pathname)
+
+  const isActive = (href: string) => {
+    return pathname == (href) ? true : false
+  }
+
+
+  useEffect(() => {
+    setPathname(location.pathname)
+  }, [location])
 
   return (
     <div
@@ -81,7 +94,7 @@ const Menu = ({ isMenuClose }: TypeMenuProps) => {
           <div className="px-5 text-[0.80rem] grid gap-5">
             {menuItem.subMenuItems.map((subItem, subIndex) => (
               <div key={subIndex} className="grid gap-4">
-                <div className="flex justify-between cursor-pointer group">
+                <div className="flex justify-between cursor-pointer group" style={isActive(subItem.href || "") ? {color: '#e39272'} : {}}>
                   <div className="flex items-center">
                     {subItem.menuIcon}
                     <div className="ml-3 group-hover:text-[#e39272]">
@@ -105,8 +118,8 @@ const Menu = ({ isMenuClose }: TypeMenuProps) => {
                 {subItem.dropdown && openDropdown === subItem.title && (
                   <div className="px-3 text-ash-100 grid gap-3">
                     {subItem.dropdown.map((dropItem, dropIndex) => (
-                      <div key={dropIndex} className="flex items-center group">
-                        <div className="size-2 border-2 rounded-full group-hover:bg-[#e39272]"></div>
+                      <div key={dropIndex} className="flex items-center group" style={isActive(dropItem.href || "") ? {color: '#e39272'} : {}}>
+                        <div className="size-2 border-2 rounded-full group-hover:bg-[#e39272]" style={isActive(dropItem.href || "") ? {backgroundColor: '#e39272'} : {}}></div>
                         <div className="ml-2 group-hover:text-[#e39272]">
                           <a href={dropItem.href}>{dropItem.title}</a>
                         </div>

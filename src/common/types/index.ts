@@ -66,7 +66,7 @@ export type TypeProductTableProps = {
   columns?: any;
 };
 
-type TableColumn = {
+export type TableColumn = {
   title: string;
   dataIndex: string;
   key: string;
@@ -92,8 +92,30 @@ type TypeSearchItem = {
 };
 
 export type TypeFilterProps = TypeFilterItem[];
+export type TypeSearchProps = TypeSearchItem[];
+
 
 export type TypeSearchFilterProps = {
   filterProps: TypeFilterProps;
-  searchProps: TypeSearchItem[];
+  searchProps: TypeSearchProps;
 };
+
+export type TypeListTableProps = {
+  filterProps:TypeFilterProps;
+    searchProps: TypeSearchProps;
+    columns: TableColumn[]
+    mobileWidth: string;
+}
+
+export type TypeListTableHeaderAction = {
+  title: string;
+  fn?: () => void;
+  icon: React.ReactElement;
+  color?: string;
+}
+
+export type TypeListTableHeaderProps = {
+  title: string;
+  subtitle: string;
+  actions?: TypeListTableHeaderAction[];
+}
