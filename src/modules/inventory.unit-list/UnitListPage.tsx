@@ -1,4 +1,3 @@
-import { MdEmail } from "react-icons/md";
 import ListTable from "../../common/components/ListTable";
 import ListTableHeader from "../../common/components/ListTableHeader";
 import { TypeListTableHeaderAction } from "../../common/types";

@@ -1,5 +1,3 @@
-import React from 'react'
-
 const KebabMenuVertical = () => {
   return (
     <div className='grid gap-[0.15rem]'>

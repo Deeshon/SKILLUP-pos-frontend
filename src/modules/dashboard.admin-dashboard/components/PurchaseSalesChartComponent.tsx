@@ -38,9 +38,6 @@ export default function BorderRadius() {
           labelStyle: { fill: "white" }, // Set x-axis labels color to white
           tickSize: 10,
           tickLabelStyle: { fill: "white" },
-          categoryGapRatio: 0.7,
-
-
         },
       ]}
       yAxis={[
