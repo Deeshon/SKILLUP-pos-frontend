@@ -1,4 +1,5 @@
-import { BarChart, BarChartProps } from "@mui/x-charts/BarChart";
+import { BarChart, BarChartProps } from '@mui/x-charts/BarChart';
+
 
 const dataset = [
   [300, -400, "Jan"],
