@@ -18,7 +18,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         </div>
 
         {/* Main Content (Children) */}
-        <div className="flex-grow overflow-y-auto p-4">{children}</div>
+        <div className="flex-grow overflow-y-auto p-4 w-1/2">{children}</div>
       </div>
     </div>
   );

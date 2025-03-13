@@ -47,7 +47,7 @@ const menu: {
         menuIcon: <MdProductionQuantityLimits size={17} />,
         href: "/inventory/product-list"
       },
-      { title: "Create Products", menuIcon: <FaBoxOpen size={17} />},
+      { title: "Create Products", menuIcon: <FaBoxOpen size={17} />, href: "/inventory/create-product"},
       { title: "Expired Products", menuIcon: <GiWrappedSweet size={17} />, href: "/inventory/expired-products" },
       { title: "Low Stocks", menuIcon: <FaCubes size={17} />, href: "/inventory/low-stocks"  },
       { title: "Category", menuIcon: <MdCategory size={17} />, href: "/inventory/category-list"   },
