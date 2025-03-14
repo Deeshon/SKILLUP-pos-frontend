@@ -2,12 +2,11 @@ import { JSX, useEffect, useState } from "react";
 import { TypeMenuProps } from "../types";
 import { RiDashboardFill, RiArrowDropRightLine } from "react-icons/ri";
 import { HiOutlineDeviceMobile } from "react-icons/hi";
-import { FaBoxOpen, FaCubes, FaTags, FaBarcode } from "react-icons/fa";
+import { FaBoxOpen, FaCubes, FaTags } from "react-icons/fa";
 import { GiWrappedSweet } from "react-icons/gi";
 import {
   MdProductionQuantityLimits,
   MdCategory,
-  MdOutlineQrCode2,
 } from "react-icons/md";
 import { useLocation } from "react-router-dom";
 
