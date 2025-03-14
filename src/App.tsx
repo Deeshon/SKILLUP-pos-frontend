@@ -85,11 +85,20 @@ function App() {
               contentBg: '#1d1d41',
               headerBg: "#1d1d41",
               titleColor: 'white'
+            },
+            Select: {
+              colorText: '#a7b2c0',
+              optionActiveBg: '#fe9f43',
+              
+            },
+            Input: {
+              colorTextPlaceholder: '#a7b2c0',
             }
           },
           token: {
             colorBgContainer: '#1d1d41',
-            colorText: '#8294d3'
+            colorText: 'white',
+            colorBorder: '#353570',
           }
         }}
       >

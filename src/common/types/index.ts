@@ -119,3 +119,16 @@ export type TypeListTableHeaderProps = {
   subtitle: string;
   actions?: TypeListTableHeaderAction[];
 }
+
+type TypeStepperDirection = "vertical" | "horizontal";
+
+type TypeStepperItem = {
+  title: string;
+  description?: string;
+}
+
+export type TypeStepperProps = {
+  direction: TypeStepperDirection;
+  current: number;
+  items: TypeStepperItem[]
+}
