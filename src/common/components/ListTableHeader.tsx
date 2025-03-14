@@ -43,7 +43,7 @@ const ListTableHeader = ({
         <div className=" flex md:flex-row flex-col gap-6">
           {actions?.map((action) => (
             <div>
-              <button className="text-white bg-yellowOrange px-3 py-[0.6rem] rounded-md flex items-center justify-center gap-2 text-sm font-semibold" style={{backgroundColor: action.color}}>
+              <button onClick={action.fn} className="text-white bg-yellowOrange px-3 py-[0.6rem] rounded-md flex items-center justify-center gap-2 text-sm font-semibold cursor-pointer hover:border-2 hover:border-white border-2 border-yellowOrange" style={{backgroundColor: action.color}}>
                 {action.icon}
                 <p>{action.title}</p>
               </button>

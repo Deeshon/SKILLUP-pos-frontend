@@ -94,41 +94,52 @@ type TypeSearchItem = {
 export type TypeFilterProps = TypeFilterItem[];
 export type TypeSearchProps = TypeSearchItem[];
 
-
 export type TypeSearchFilterProps = {
   filterProps: TypeFilterProps;
   searchProps: TypeSearchProps;
 };
 
 export type TypeListTableProps = {
-  filterProps:TypeFilterProps;
-    searchProps: TypeSearchProps;
-    columns: TableColumn[]
-    mobileWidth: string;
-}
+  filterProps: TypeFilterProps;
+  searchProps: TypeSearchProps;
+  columns: TableColumn[];
+  mobileWidth: string;
+};
 
 export type TypeListTableHeaderAction = {
   title: string;
   fn?: () => void;
   icon: React.ReactElement;
   color?: string;
-}
+};
 
 export type TypeListTableHeaderProps = {
   title: string;
   subtitle: string;
   actions?: TypeListTableHeaderAction[];
-}
+};
 
 type TypeStepperDirection = "vertical" | "horizontal";
 
 type TypeStepperItem = {
   title: string;
   description?: string;
-}
+};
 
 export type TypeStepperProps = {
   direction: TypeStepperDirection;
   current: number;
-  items: TypeStepperItem[]
-}
+  items: TypeStepperItem[];
+};
+
+export type TypeCustomModalFormItems = {
+  name: string;
+  type: "input" | "switch";
+};
+
+export type TypeCustomModalProps = {
+  isOpen: boolean;
+  onCloseModal: () => void;
+  title: string;
+  formItems: TypeCustomModalFormItems[];
+};

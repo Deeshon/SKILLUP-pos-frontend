@@ -51,12 +51,9 @@ const menu: {
       { title: "Expired Products", menuIcon: <GiWrappedSweet size={17} />, href: "/inventory/expired-products" },
       { title: "Low Stocks", menuIcon: <FaCubes size={17} />, href: "/inventory/low-stocks"  },
       { title: "Category", menuIcon: <MdCategory size={17} />, href: "/inventory/category-list"   },
-      { title: "Sub Category", menuIcon: <MdCategory size={17} />,  },
       { title: "Brands", menuIcon: <FaTags size={17} />, href: "/inventory/brand-list" },
       { title: "Units", menuIcon: <FaCubes size={17} />, href: "/inventory/unit-list" },
       { title: "Warranties", menuIcon: <GiWrappedSweet size={17} /> },
-      { title: "Print Barcode", menuIcon: <FaBarcode size={17} /> },
-      { title: "Print QR", menuIcon: <MdOutlineQrCode2 size={17} /> },
     ],
   },
 ];
