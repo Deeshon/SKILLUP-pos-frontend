@@ -3,9 +3,13 @@ import ListTable from "../../common/components/ListTable";
 import ListTableHeader from "../../common/components/ListTableHeader";
 import useProductTable from "./hooks/useProductTable";
 import { CiImport } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
+
 
 const ProductListPage = () => {
   const { columns } = useProductTable();
+  const navigate = useNavigate();
+
 
   return (
     <div className="py-2 md:p-2">
@@ -16,6 +20,9 @@ const ProductListPage = () => {
           {
             title: "Add New Product",
             icon: <IoIosAddCircleOutline size={20} />,
+            fn: () => {
+              navigate("/inventory/create-product");
+            }
           },
           {
             title: "Import Products",

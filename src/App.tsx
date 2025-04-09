@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import "./App.css";
 import Layout from "./Layout";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -15,57 +20,54 @@ const pages = import.meta.glob("./pages/**/*.tsx", { eager: true }) as Record<
 // Import the 404 Not Found page
 const NotFound =
   pages["./pages/notFound.tsx"]?.default ||
-  (() => <h1>404 - Page Not Found</h1>);
+  (() => <h1 className="text-white">404 - Page Not Found</h1>);
 
-  function generateRoutes() {
-    const dynamicRoutes: JSX.Element[] = []; // Store dynamic routes separately
-    const staticRoutes: JSX.Element[] = [];
-  
-    Object.entries(pages).forEach(([path, module]) => {
-      const Component = module.default;
-  
-      // Generate the route path based on the file structure
-      const routePath = path
-        .replace("./pages", "") // Remove leading './pages'
-        .replace(/\/index\.tsx$/, "") // Remove index.tsx for folders
-        .replace(/\.tsx$/, "") // Remove '.tsx'
-        .replace(/\/+/g, "/"); // Normalize slashes
-  
-      const finalPath = routePath === "/home" ? "/" : routePath.toLowerCase();
-  
-      // Check if the path is a dynamic one (e.g., /product/:id)
-      if (routePath.includes("[id]")) {
-        const dynamicRoute = routePath.replace("[id]", ":id")
-        dynamicRoutes.push(
-          <Route
-            key={finalPath}
-            path={dynamicRoute}
-            element={
-              <Layout>
-                <Component />
-              </Layout>
-            }
-          />
-        );
-      } else {
-        staticRoutes.push(
-          <Route
-            key={finalPath}
-            path={finalPath}
-            element={
-              <Layout>
-                <Component />
-              </Layout>
-            }
-          />
-        );
-      }
-    });
-  
-    return [...staticRoutes, ...dynamicRoutes]; // Return static and dynamic routes combined
-  }
-  
-  
+function generateRoutes() {
+  const dynamicRoutes: JSX.Element[] = []; // Store dynamic routes separately
+  const staticRoutes: JSX.Element[] = [];
+
+  Object.entries(pages).forEach(([path, module]) => {
+    const Component = module.default;
+
+    // Generate the route path based on the file structure
+    const routePath = path
+      .replace("./pages", "") // Remove leading './pages'
+      .replace(/\/index\.tsx$/, "") // Remove index.tsx for folders
+      .replace(/\.tsx$/, "") // Remove '.tsx'
+      .replace(/\/+/g, "/"); // Normalize slashes
+
+    const finalPath = routePath === "/" ? "/home" : routePath.toLowerCase();
+    // Check if the path is a dynamic one (e.g., /product/:id)
+    if (routePath.includes("[id]")) {
+      const dynamicRoute = routePath.replace("[id]", ":id");
+      dynamicRoutes.push(
+        <Route
+          key={finalPath}
+          path={dynamicRoute}
+          element={
+            <Layout>
+              <Component />
+            </Layout>
+          }
+        />
+      );
+    } else {
+      staticRoutes.push(
+        <Route
+          key={finalPath}
+          path={finalPath}
+          element={
+            <Layout>
+              <Component />
+            </Layout>
+          }
+        />
+      );
+    }
+  });
+
+  return [...staticRoutes, ...dynamicRoutes]; // Return static and dynamic routes combined
+}
 
 // create tanstack query client
 const queryClient = new QueryClient();
@@ -77,33 +79,36 @@ function App() {
         theme={{
           components: {
             Table: {
-              headerBg: '#141332',
-              headerColor: '#8294d3',
-              borderColor: '#353570'
+              headerBg: "#141332",
+              headerColor: "#8294d3",
+              borderColor: "#353570",
             },
             Modal: {
-              contentBg: '#1d1d41',
+              contentBg: "#1d1d41",
               headerBg: "#1d1d41",
-              titleColor: 'white'
+              titleColor: "white",
             },
             Select: {
-              colorText: '#a7b2c0',
-              optionActiveBg: '#fe9f43',
-              
+              colorText: "#a7b2c0",
+              optionActiveBg: "#fe9f43",
             },
             Input: {
-              colorTextPlaceholder: '#a7b2c0',
-            }
+              colorTextPlaceholder: "#a7b2c0",
+            },
           },
           token: {
-            colorBgContainer: '#1d1d41',
-            colorText: 'white',
-            colorBorder: '#353570',
-          }
+            colorBgContainer: "#1d1d41",
+            colorText: "white",
+            colorBorder: "#353570",
+          },
         }}
       >
         <Router>
           <Routes>
+            <Route
+              path="/"
+              element={<Navigate to="/dashboard/admin" replace />}
+            />
             {generateRoutes()}
             {/* Add a catch-all route for undefined paths */}
             <Route path="*" element={<NotFound />} />
